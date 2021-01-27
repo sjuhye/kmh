@@ -166,6 +166,8 @@ div > p:last-of-type {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   padding: 20px;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 /* work landing */
