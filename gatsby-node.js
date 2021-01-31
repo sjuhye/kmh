@@ -79,7 +79,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const res = await graphql(`
     query {
-      allContentfulBlog {
+      allContentfulBlog (
+        sort: {
+          fields: published,
+          order: DESC
+        }
+      ) {
         edges {
           node {
             slug

@@ -46,7 +46,6 @@ const Blog = () => {
   `);
 
   const instances = data.allContentfulBlog.edges;
-
   const options = renderEmdAssetBlock(instances?.node?.blurb?.references, instances?.node?.blurb?.references?.title);
 
   return (

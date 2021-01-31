@@ -29,27 +29,27 @@ export const query = graphql`
 `;
 
 const BlogPost = ({ data, pathContext }) => {
-    const instance = data.contentfulBlog;
-
-    const options = renderEmdAssetBlock(instance?.body?.references, instance?.body?.references?.title);
+    const { title, body, published } = data.contentfulBlog;
+    const { prev, next } = pathContext;
+    const options = renderEmdAssetBlock(body?.references, body?.references?.title);
 
     return (
         <div className='main'>
             <Navbar />
             <div className='blog-post-wrapper'>
                 <section className='title-date'>
-                    <h1 className='blog-post-title'>{instance.title}</h1>
-                    <p>{instance.published}</p>
+                    <h1 className='blog-post-title'>{title}</h1>
+                    <p>{published}</p>
                 </section>
                 <section className='blog-post-text'>
-                    {documentToReactComponents(JSON.parse(instance.body.raw), options)}
+                    {documentToReactComponents(JSON.parse(body.raw), options)}
                 </section>
-                <section className={(pathContext.prev && pathContext.next) ? 'flex-two-col' : pathContext.prev ? 'prev' : 'next'}>
-                    {pathContext.prev &&
-                        <Link to={`/blog/${pathContext.prev.slug}`}><p>&#8592; Previous</p></Link>
+                <section className={(prev && next) ? 'flex-two-col' : prev ? 'prev' : 'next'}>
+                    {prev &&
+                        <Link to={`/blog/${prev.slug}`}><p>&#8592; Previous</p></Link>
                     }
-                    {pathContext.next &&
-                        <Link to={`/blog/${pathContext.next.slug}`}><p>Next &#8594;</p></Link>
+                    {next &&
+                        <Link to={`/blog/${next.slug}`}><p>Next &#8594;</p></Link>
                     }
                 </section>
             </div>

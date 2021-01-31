@@ -111,33 +111,49 @@ export const query = graphql`
 `;
 
 const WorkPost = ({ data }) => {
-    const instance = data.contentfulWork;
-
-    const options = renderEmdAssetBlock(instance?.body?.references, instance?.body?.references?.title);
-
-    const options2 = renderEmdAssetBlock(instance?.body2?.references, instance?.body2?.references?.title);
-
-    const options3 = renderEmdAssetBlock(instance?.body3?.references, instance?.body3?.references?.title);
+    const {
+        jumbotron,
+        title,
+        body,
+        fullWidthMedia,
+        mediaGallery,
+        twoCol,
+        landscape,
+        body2,
+        right,
+        featuredMedia,
+        fullWidthMedia2,
+        mediaGallery2,
+        twoCol2,
+        landscape2,
+        body3,
+        left,
+        featuredMedia2,
+        rightCredit
+    } = data.contentfulWork;
+    const options = renderEmdAssetBlock(body?.references, body?.references?.title);
+    const options2 = renderEmdAssetBlock(body2?.references, body2?.references?.title);
+    const options3 = renderEmdAssetBlock(body3?.references, body3?.references?.title);
 
     return (
         <div className='main'>
             <Navbar />
             <div className='work-post-wrapper'>
                 <picture>
-                    <source srcSet={instance.jumbotron.fluid.src} />
-                    <img className='jumbotron' src={instance.jumbotron.fluid.srcWebp} alt={instance.jumbotron.title} />
+                    <source srcSet={jumbotron.fluid.src} />
+                    <img className='jumbotron' src={jumbotron.fluid.srcWebp} alt={jumbotron.title} />
                 </picture>
-                <section className={instance.body ? 'flex-two-col title-text' : 'flex-left'}>
-                    <h1 className='title'>{instance.title} <span>||</span></h1>
-                    {instance.body &&
+                <section className={body ? 'flex-two-col title-text' : 'flex-left'}>
+                    <h1 className='title'>{title} <span>||</span></h1>
+                    {body &&
                         <div>
-                            {documentToReactComponents(JSON.parse(instance.body.raw), options)}
+                            {documentToReactComponents(JSON.parse(body.raw), options)}
                         </div>
                     }
                 </section>
-                {instance.fullWidthMedia &&
+                {fullWidthMedia &&
                     <section className='grid-one-col'>
-                        {instance.fullWidthMedia.map((media, i) => {
+                        {fullWidthMedia.map((media, i) => {
                             return (
                                 <picture key={i}>
                                     <source srcSet={media.fluid.src} />
@@ -147,36 +163,36 @@ const WorkPost = ({ data }) => {
                         })}
                     </section>
                 }
-                {instance.mediaGallery &&
-                    <section className={instance.twoCol ? 'grid-two-col' : 'grid-three-col'}>
-                        {instance.mediaGallery.map((media, i) => {
+                {mediaGallery &&
+                    <section className={twoCol ? 'grid-two-col' : 'grid-three-col'}>
+                        {mediaGallery.map((media, i) => {
                             return (
                                 <picture key={i}>
                                     <source srcSet={media.fluid.src} />
-                                    <img className={instance.landscape ? 'landscape' : 'portrait'} src={media.fluid.srcWebp} alt={media.title} />
+                                    <img className={landscape ? 'landscape' : 'portrait'} src={media.fluid.srcWebp} alt={media.title} />
                                 </picture>
                             )
                         })}
                     </section>
                 }
-                {(instance.body2 || instance.featuredMedia) &&
-                    <section className={instance.featuredMedia ? 'flex-two-col title-text' : !instance.featuredMedia && instance.right ? 'flex-right' : 'flex-left'}>
-                        {instance.body2 &&
+                {(body2 || featuredMedia) &&
+                    <section className={featuredMedia ? 'flex-two-col title-text' : !featuredMedia && right ? 'flex-right' : 'flex-left'}>
+                        {body2 &&
                             <div>
-                                {documentToReactComponents(JSON.parse(instance.body2.raw), options2)}
+                                {documentToReactComponents(JSON.parse(body2.raw), options2)}
                             </div>
                         }
-                        {instance.featuredMedia &&
+                        {featuredMedia &&
                             <picture>
-                                <source srcSet={instance.featuredMedia.fluid.src} />
-                                <img className='featured-media' src={instance.featuredMedia.fluid.srcWebp} alt={instance.featuredMedia.title} />
+                                <source srcSet={featuredMedia.fluid.src} />
+                                <img className='featured-media' src={featuredMedia.fluid.srcWebp} alt={featuredMedia.title} />
                             </picture>
                         }
                     </section>
                 }
-                {instance.fullWidthMedia2 &&
+                {fullWidthMedia2 &&
                     <section className='grid-one-col'>
-                        {instance.fullWidthMedia2.map((media, i) => {
+                        {fullWidthMedia2.map((media, i) => {
                             return (
                                 <picture key={i}>
                                     <source srcSet={media.fluid.src} />
@@ -186,37 +202,37 @@ const WorkPost = ({ data }) => {
                         })}
                     </section>
                 }
-                {instance.mediaGallery2 &&
-                    <section className={instance.twoCol2 ? 'grid-two-col' : 'grid-three-col'}>
-                        {instance.mediaGallery2.map((media, i) => {
+                {mediaGallery2 &&
+                    <section className={twoCol2 ? 'grid-two-col' : 'grid-three-col'}>
+                        {mediaGallery2.map((media, i) => {
                             return (
                                 <picture key={i}>
                                     <source srcSet={media.fluid.src} />
-                                    <img className={instance.landscape2 ? 'landscape' : 'portrait'} src={media.fluid.srcWebp} alt={media.title} />
+                                    <img className={landscape2 ? 'landscape' : 'portrait'} src={media.fluid.srcWebp} alt={media.title} />
                                 </picture>
                             )
                         })}
                     </section>
                 }
-                {(instance.body3 || instance.featuredMedia2) &&
-                    <section className={instance.featuredMedia2 ? 'flex-two-col title-text' : !instance.featuredMedia2 && instance.left ? 'flex-left' : 'flex-right'}>
-                        {instance.featuredMedia2 &&
+                {(body3 || featuredMedia2) &&
+                    <section className={featuredMedia2 ? 'flex-two-col title-text' : !featuredMedia2 && left ? 'flex-left' : 'flex-right'}>
+                        {featuredMedia2 &&
                             <picture>
-                                <source srcSet={instance.featuredMedia2.fluid.src} />
-                                <img className='featured-media' src={instance.featuredMedia2.fluid.srcWebp} alt={instance.featuredMedia2.title} />
+                                <source srcSet={featuredMedia2.fluid.src} />
+                                <img className='featured-media' src={featuredMedia2.fluid.srcWebp} alt={featuredMedia2.title} />
                             </picture>
                         }
-                        {instance.body3 &&
+                        {body3 &&
                             <div>
-                                {documentToReactComponents(JSON.parse(instance.body3.raw), options3)}
+                                {documentToReactComponents(JSON.parse(body3.raw), options3)}
                             </div>
                         }
                     </section>
                 }
-                {instance.rightCredit &&
+                {rightCredit &&
                     <section className='credit-section'>
                         <div className='piping'>
-                            {documentToReactComponents(JSON.parse(instance.rightCredit.raw))}
+                            {documentToReactComponents(JSON.parse(rightCredit.raw))}
                         </div>
                     </section>
                 }

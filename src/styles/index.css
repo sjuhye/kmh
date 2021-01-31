@@ -50,6 +50,17 @@ div > p:last-of-type {
   margin-bottom: 0;
 }
 
+.main {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 15px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 20px;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
 /* navbar */
 
 #navbar {
@@ -150,17 +161,6 @@ div > p:last-of-type {
 
 #footer span > a:last-of-type {
   margin-left: 10px;
-}
-
-.main {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  gap: 15px;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  padding: 20px;
-  max-width: 1920px;
-  margin: 0 auto;
 }
 
 /* work landing */
