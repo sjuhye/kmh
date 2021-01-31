@@ -273,7 +273,6 @@ div > p:last-of-type {
   display: flex;
   flex-flow: column;
   align-items: center;
-  width: 100%;
   margin: 0 8px;
 }
 
@@ -343,13 +342,13 @@ h1 + div {
   padding-top: 28px;
 }
 
-.flex-left {
+.flex-left, .prev {
   display: flex;
   justify-content: flex-start;
   width: 100%;
 }
 
-.flex-right {
+.flex-right, .next {
   display: flex;
   justify-content: flex-end;
   width: 100%;
@@ -371,7 +370,6 @@ h1 + div {
 /* blog post */
 
 .blog-post-wrapper {
-  width: 100%;
   margin: 0 8px;
 }
 
@@ -380,6 +378,11 @@ h1 + div {
   font-size: 30px;
   font-weight: normal;
   letter-spacing: 0.5px;
+}
+
+.prev p, .next p {
+  font-style: normal;
+  margin: 0;
 }
 
 /* 404 */

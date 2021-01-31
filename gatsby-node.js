@@ -78,40 +78,46 @@ exports.createPages = async ({ graphql, actions }) => {
   const workTemplate = path.resolve('./src/templates/workPost.js');
 
   const res = await graphql(`
-      query {
-        allContentfulBlog {
-          edges {
-            node {
-              slug
-            }
-          }
-        }
-        allContentfulWork {
-          edges {
-            node {
-              slug
-            }
+    query {
+      allContentfulBlog {
+        edges {
+          node {
+            slug
           }
         }
       }
-    `);
+      allContentfulWork {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `);
 
-  res.data.allContentfulBlog.edges.forEach((edge) => {
+  const blogPosts = res.data.allContentfulBlog.edges;
+
+  blogPosts.forEach(({ node }, index) => {
     createPage({
       component: blogTemplate,
-      path: `/blog/${edge.node.slug}`,
+      path: `/blog/${node.slug}`,
       context: {
-        slug: edge.node.slug
+        slug: node.slug,
+        prev: index === 0 ? null : blogPosts[index-1].node,
+        next: index === (blogPosts.length-1) ? null : blogPosts[index+1].node
       }
     });
   });
 
-  res.data.allContentfulWork.edges.forEach((edge) => {
+  const workPosts = res.data.allContentfulWork.edges;
+
+  workPosts.forEach(({ node }) => {
     createPage({
       component: workTemplate,
-      path: `/work/${edge.node.slug}`,
+      path: `/work/${node.slug}`,
       context: {
-        slug: edge.node.slug
+        slug: node.slug
       }
     });
   });

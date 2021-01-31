@@ -28,7 +28,7 @@ export const query = graphql`
     }
 `;
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data, pathContext }) => {
     const instance = data.contentfulBlog;
 
     const options = renderEmdAssetBlock(instance?.body?.references, instance?.body?.references?.title);
@@ -37,11 +37,21 @@ const BlogPost = ({ data }) => {
         <div className='main'>
             <Navbar />
             <div className='blog-post-wrapper'>
-                <div className='title-date'>
+                <section className='title-date'>
                     <h1 className='blog-post-title'>{instance.title}</h1>
                     <p>{instance.published}</p>
-                </div>
-                <div className='blog-post-text'>{documentToReactComponents(JSON.parse(instance.body.raw), options)}</div>
+                </section>
+                <section className='blog-post-text'>
+                    {documentToReactComponents(JSON.parse(instance.body.raw), options)}
+                </section>
+                <section className={(pathContext.prev && pathContext.next) ? 'flex-two-col' : pathContext.prev ? 'prev' : 'next'}>
+                    {pathContext.prev &&
+                        <Link to={`/blog/${pathContext.prev.slug}`}><p>&#8592; Previous</p></Link>
+                    }
+                    {pathContext.next &&
+                        <Link to={`/blog/${pathContext.next.slug}`}><p>Next &#8594;</p></Link>
+                    }
+                </section>
             </div>
             <Footer />
         </div>

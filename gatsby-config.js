@@ -1,20 +1,20 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
-let contentfulOptions = {}
+let contentfulOptions = {};
 
 if (process.env.NODE_ENV === 'production') {
   contentfulOptions = {
     spaceId: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-  }
+  };
 } else {
   contentfulOptions = {
     spaceId: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
     host: 'preview.contentful.com'
-  }
+  };
 }
 
 module.exports = {

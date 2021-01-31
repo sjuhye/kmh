@@ -139,9 +139,9 @@ const WorkPost = ({ data }) => {
                     <section className='grid-one-col'>
                         {instance.fullWidthMedia.map((media, i) => {
                             return (
-                                <picture>
+                                <picture key={i}>
                                     <source srcSet={media.fluid.src} />
-                                    <img src={media.fluid.srcWebp} alt={media.title} key={i} />
+                                    <img src={media.fluid.srcWebp} alt={media.title} />
                                 </picture>
                             )
                         })}
@@ -151,9 +151,9 @@ const WorkPost = ({ data }) => {
                     <section className={instance.twoCol ? 'grid-two-col' : 'grid-three-col'}>
                         {instance.mediaGallery.map((media, i) => {
                             return (
-                                <picture>
+                                <picture key={i}>
                                     <source srcSet={media.fluid.src} />
-                                    <img className={instance.landscape ? 'landscape' : 'portrait'} src={media.fluid.srcWebp} alt={media.title} key={i} />
+                                    <img className={instance.landscape ? 'landscape' : 'portrait'} src={media.fluid.srcWebp} alt={media.title} />
                                 </picture>
                             )
                         })}
@@ -178,9 +178,9 @@ const WorkPost = ({ data }) => {
                     <section className='grid-one-col'>
                         {instance.fullWidthMedia2.map((media, i) => {
                             return (
-                                <picture>
+                                <picture key={i}>
                                     <source srcSet={media.fluid.src} />
-                                    <img src={media.fluid.srcWebp} alt={media.title} key={i} />
+                                    <img src={media.fluid.srcWebp} alt={media.title} />
                                 </picture>
                             )
                         })}
@@ -190,9 +190,9 @@ const WorkPost = ({ data }) => {
                     <section className={instance.twoCol2 ? 'grid-two-col' : 'grid-three-col'}>
                         {instance.mediaGallery2.map((media, i) => {
                             return (
-                                <picture>
+                                <picture key={i}>
                                     <source srcSet={media.fluid.src} />
-                                    <img className={instance.landscape2 ? 'landscape' : 'portrait'} src={media.fluid.srcWebp} alt={media.title} key={i} />
+                                    <img className={instance.landscape2 ? 'landscape' : 'portrait'} src={media.fluid.srcWebp} alt={media.title} />
                                 </picture>
                             )
                         })}
