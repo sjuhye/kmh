@@ -34,7 +34,7 @@ p {
 
 blockquote {
   border-left: double lightgray;
-  border-width: 4px;
+  border-width: 3px;
   padding-left: 6px;
 }
 
@@ -99,7 +99,7 @@ div > p:last-of-type {
 
 .menu button:hover, .menu button:active {
   border-right: double #EF473C;
-  border-width: 4px;
+  border-width: 3px;
   padding-right: 4px;
 }
 
@@ -363,7 +363,7 @@ h1 + div {
 
 .piping {
   border-left: double lightgray;
-  border-width: 4px;
+  border-width: 3px;
   padding-left: 6px;
   box-sizing: border-box;
 }
