@@ -38,7 +38,7 @@ blockquote {
   padding-left: 6px;
 }
 
-img {
+img, .blog-post-wrapper picture, .work-post-wrapper picture {
   width: 100%;
 }
 
@@ -273,10 +273,12 @@ div > p:last-of-type {
   display: flex;
   flex-flow: column;
   align-items: center;
+  width: 100%;
   margin: 0 8px;
 }
 
 .work-post-wrapper > section {
+  width: 100%;
   margin: 30px 0 0 0;
 }
 
@@ -369,6 +371,7 @@ h1 + div {
 /* blog post */
 
 .blog-post-wrapper {
+  width: 100%;
   margin: 0 8px;
 }
 

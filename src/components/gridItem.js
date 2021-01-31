@@ -9,7 +9,7 @@ const GridItem = ({ image, overlay, text }) => {
 
     return (
         <Fragment>
-            <div className='grid-item-container' onMouseEnter={toggleOverlay} onMouseLeave={toggleOverlay}>
+            <div className='grid-item-container' onMouseEnter={toggleOverlay} onMouseLeave={toggleOverlay} role='img'>
                 <picture>
                     <source srcSet={image.fluid.src} />
                     <img className='grid-item-image' src={image.fluid.srcWebp} alt={image.title} />
