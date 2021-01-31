@@ -7,7 +7,12 @@ export const renderEmdAssetBlock = (references, title) => {
                 const id = node.data.target.sys.id;
                 const reference = references.find((reference) => reference.contentful_id === id);
                 
-                return <img src={reference.fluid.srcWebp} alt={title} />
+                return (
+                    <picture>
+                        <source srcSet={reference.fluid.src} />
+                        <img src={reference.fluid.srcWebp} alt={title} />
+                    </picture>
+                )
             }
         }
     }

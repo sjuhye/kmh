@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import '../styles/index.css';
 
@@ -66,18 +66,20 @@ const Navbar = () => {
                 <span className='line'></span>
                 <span className='line'></span>
             </button>
-            <div className={!mobileMenu && isMobileViewport() ? 'hide-menu' : 'menu'}>
+            <div className={!mobileMenu && isMobileViewport() ? 'inactive' : 'menu'}>
                 <div>
                     <button onClick={openMenu} data-index='0'>About</button>
                 </div>
-                <div className={menuIndex === 0 ? 'menu-about show-menu' : 'hide-menu'}>
+                <div className={menuIndex === 0 ? 'menu-about' : 'inactive'}>
                     <img alt='Katie Hodge Headshot' src={data.contentfulAsset.file.url} />
                     <p>Katie is a designer based in NYC. She received her BFA in Graphic Design with a minor in Marketing at Appalachian State University.</p>
                     <p>Download her <a href='http://assets.ctfassets.net/clm1muu58ksw/4gsJcKB09XCkgYOC7x0yb7/c7e5f9ce89363d06e37fbd7f820c56c7/resume_2020_v1.pdf' rel='noreferrer' target='_blank'>resume</a> or send her an <a href='mailto:hodgekm1@gmail.com'>email</a>.</p>
                     <p>Photo by <a href='https://www.brittanyherbertphotography.com/'>Brittany Herbert</a></p>
                 </div>
-                <div><button onClick={openMenu} data-index='1'>Work</button></div>
-                <ul className={menuIndex === 1 ? 'menu-work show-menu' : 'hide-menu'}>
+                <div>
+                    <button onClick={openMenu} data-index='1'>Work</button>
+                </div>
+                <ul className={menuIndex === 1 ? 'menu-work' : 'inactive'}>
                     {data.allContentfulWork.edges.map((el, i) => {
                         return (
                             <li key={i}>
@@ -89,8 +91,10 @@ const Navbar = () => {
                     })}
                     <li><Link to='/'>See All</Link></li>
                 </ul>
-                <div><button onClick={openMenu} data-index='2'>Process</button></div>
-                <div className={menuIndex === 2 ? 'menu-blog show-menu' : 'hide-menu'}>
+                <div>
+                    <button onClick={openMenu} data-index='2'>Process</button>
+                </div>
+                <div className={menuIndex === 2 ? 'menu-blog' : 'inactive'}>
                     <p>Follow Katie's process on her <Link to='/blog'>blog</Link>.</p>
                 </div>
             </div>

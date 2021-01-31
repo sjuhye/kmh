@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
-const GridItem = ({ image, overlay, imageTitle, overlayTitle, text }) => {
+const GridItem = ({ image, overlay, text }) => {
     const [ hover, setHover ] = useState(false);
 
     function toggleOverlay() {
@@ -10,9 +10,15 @@ const GridItem = ({ image, overlay, imageTitle, overlayTitle, text }) => {
     return (
         <Fragment>
             <div className='grid-item-container' onMouseEnter={toggleOverlay} onMouseLeave={toggleOverlay}>
-                <img className='grid-item-image' src={image} alt={imageTitle} />
-                <img className={hover ? 'grid-item-overlay' : 'hide'} src={overlay} alt={overlayTitle} />
-                <div className={hover ? 'grid-item-text' : 'hide'}>{text}</div>
+                <picture>
+                    <source srcSet={image.fluid.src} />
+                    <img className='grid-item-image' src={image.fluid.srcWebp} alt={image.title} />
+                </picture>
+                <picture>
+                    <source srcSet={overlay.fluid.src} />
+                    <img className={hover ? 'grid-item-overlay' : 'inactive'} src={overlay.fluid.srcWebp} alt={overlay.title} />
+                </picture>
+                <div className={hover ? 'grid-item-text' : 'inactive'}>{text}</div>
             </div>
         </Fragment>
     )

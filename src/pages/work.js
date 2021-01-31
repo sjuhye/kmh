@@ -15,18 +15,16 @@ const Work = () => {
           media {
             fluid(maxWidth: 800) {
               srcWebp
-              srcSetWebp
+              src
             }
             title
-            contentful_id
           }
           overlay {
             fluid(maxWidth: 800) {
               srcWebp
-              srcSetWebp
+              src
             }
             title
-            contentful_id
           }
           post {
             slug
@@ -60,7 +58,7 @@ const Work = () => {
               {arr.map((el, j) => {
                 return (
                   <Link to={`/work/${el.post.slug}`} key={j}>
-                    <GridItem image={el.media.fluid.srcWebp} overlay={el.overlay.fluid.srcWebp} imageTitle={el.media.title} overlayTitle={el.overlay.title} text={el.text} />
+                    <GridItem image={el.media} overlay={el.overlay} text={el.text} />
                   </Link>
                 )
               })}

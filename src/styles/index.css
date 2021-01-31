@@ -108,6 +108,7 @@ div > p:last-of-type {
 }
 
 .menu-about, .menu-work, .menu-blog {
+  display: block;
   padding-left: 0;
   border-bottom: 1px solid #EEEEEE;
   padding-bottom: 1em;
@@ -128,14 +129,6 @@ div > p:last-of-type {
 
 .menu-work a {
   font-style: normal;
-}
-
-.show-menu {
-  display: block;
-}
-
-.hide-menu {
-  display: none;
 }
 
 /* footer */
@@ -199,7 +192,7 @@ div > p:last-of-type {
   height: 100%;
 }
 
-.hide {
+.inactive {
   display: none;
 }
 
@@ -297,6 +290,7 @@ div > p:last-of-type {
   display: grid;
   grid-template-columns: 1fr;
   gap: 30px;
+  width: 100%;
 }
 
 .grid-two-col {

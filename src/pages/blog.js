@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
@@ -23,7 +22,7 @@ const Blog = () => {
               references {
                 fluid(maxWidth: 1600) {
                   srcWebp
-                  srcSetWebp
+                  src
                 }
                 title
                 contentful_id
@@ -32,10 +31,9 @@ const Blog = () => {
             featuredMedia {
               fluid(maxWidth: 1600) {
                 srcWebp
-                srcSetWebp
+                src
               }
               title
-              contentful_id
             }
             published (
               formatString: "dddd, MMMM d, yyyy"
@@ -62,17 +60,20 @@ const Blog = () => {
                 <Link to={`/blog/${el.node.slug}`}><h1>{el.node.title}</h1></Link>
                 <p>{el.node.published}</p>
               </div>
-              <img src={el.node.featuredMedia.fluid.srcWebp} alt={el.node.featuredMedia.title} />
-                <div className='flex-left'>
-                  <div>
+              <picture>
+                <source srcSet={el.node.featuredMedia.fluid.src} />
+                <img src={el.node.featuredMedia.fluid.srcWebp} alt={el.node.featuredMedia.title} />
+              </picture>
+              <div className='flex-left'>
+                <div>
                   {documentToReactComponents(JSON.parse(el.node.blurb.raw), options)}
-                  </div>
                 </div>
-                <div className='flex-right'>
-                  <div className='piping read-more'>
-                    <Link to={`/blog/${el.node.slug}`}><p>Read more</p></Link>
-                  </div>
+              </div>
+              <div className='flex-right'>
+                <div className='piping read-more'>
+                  <Link to={`/blog/${el.node.slug}`}><p>Read more</p></Link>
                 </div>
+              </div>
             </section>
           );
         })}

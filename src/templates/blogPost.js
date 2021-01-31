@@ -13,9 +13,9 @@ export const query = graphql`
                 raw
                 references {
                     __typename
-                    fluid(maxWidth: 2000) {
+                    fluid(maxWidth: 1600) {
                         srcWebp
-                        srcSetWebp
+                        src
                     }
                     title
                     contentful_id
