@@ -56,7 +56,7 @@ div > p:last-of-type {
   gap: 15px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   max-width: 1920px;
   margin: 0 auto;
 }
@@ -145,9 +145,13 @@ div > p:last-of-type {
 /* footer */
 
 #footer {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  background-color: white;
   border-top: 1px solid #EEEEEE;
   margin-top: 15px;
-  padding: 10px 8px 0 8px;
+  padding: 10px 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -365,6 +369,7 @@ h1 + div {
   border-width: 3px;
   padding-left: 6px;
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 /* blog post */
