@@ -28,9 +28,9 @@ export const query = graphql`
     }
 `;
 
-const BlogPost = ({ data, pathContext }) => {
+const BlogPost = ({ data, pageContext }) => {
     const { title, body, published } = data.contentfulBlog;
-    const { prev, next } = pathContext;
+    const { prev, next } = pageContext;
     const options = renderEmdAssetBlock(body?.references, body?.references?.title);
 
     return (
