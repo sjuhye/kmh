@@ -35,6 +35,7 @@ export const query = graphql`
                     src
                 }
                 title
+                contentful_id
               }
               mediaGallery {
                 fluid(maxWidth: 1200) {
@@ -42,6 +43,7 @@ export const query = graphql`
                     src
                 }
                 title
+                contentful_id
               }
               twoCol
               landscape
@@ -72,6 +74,7 @@ export const query = graphql`
                     src
                 }
                 title
+                contentful_id
               }
               mediaGallery2 {
                 fluid(maxWidth: 1200) {
@@ -79,6 +82,7 @@ export const query = graphql`
                     src
                 }
                 title
+                contentful_id
               }
               twoCol2
               landscape2
@@ -153,9 +157,9 @@ const WorkPost = ({ data }) => {
                 </section>
                 {fullWidthMedia &&
                     <section className='grid-one-col'>
-                        {fullWidthMedia.map((media, i) => {
+                        {fullWidthMedia.map((media) => {
                             return (
-                                <picture key={i}>
+                                <picture key={media.contentful_id}>
                                     <source srcSet={media.fluid.src} />
                                     <img src={media.fluid.srcWebp} alt={media.title} />
                                 </picture>
@@ -165,9 +169,9 @@ const WorkPost = ({ data }) => {
                 }
                 {mediaGallery &&
                     <section className={twoCol ? 'grid-two-col' : 'grid-three-col'}>
-                        {mediaGallery.map((media, i) => {
+                        {mediaGallery.map((media) => {
                             return (
-                                <picture key={i}>
+                                <picture key={media.contentful_id}>
                                     <source srcSet={media.fluid.src} />
                                     <img className={landscape ? 'landscape' : 'portrait'} src={media.fluid.srcWebp} alt={media.title} />
                                 </picture>
@@ -192,9 +196,9 @@ const WorkPost = ({ data }) => {
                 }
                 {fullWidthMedia2 &&
                     <section className='grid-one-col'>
-                        {fullWidthMedia2.map((media, i) => {
+                        {fullWidthMedia2.map((media) => {
                             return (
-                                <picture key={i}>
+                                <picture key={media.contentful_id}>
                                     <source srcSet={media.fluid.src} />
                                     <img src={media.fluid.srcWebp} alt={media.title} />
                                 </picture>
@@ -204,9 +208,9 @@ const WorkPost = ({ data }) => {
                 }
                 {mediaGallery2 &&
                     <section className={twoCol2 ? 'grid-two-col' : 'grid-three-col'}>
-                        {mediaGallery2.map((media, i) => {
+                        {mediaGallery2.map((media) => {
                             return (
-                                <picture key={i}>
+                                <picture key={media.contentful_id}>
                                     <source srcSet={media.fluid.src} />
                                     <img className={landscape2 ? 'landscape' : 'portrait'} src={media.fluid.srcWebp} alt={media.title} />
                                 </picture>

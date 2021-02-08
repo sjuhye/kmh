@@ -1,12 +1,6 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 
-const GridItem = ({ image, overlay, text }) => {
-    const [ hover, setHover ] = useState(false);
-
-    function toggleOverlay() {
-        setHover(!hover);
-    }
-
+const GridItem = ({ image, overlay, text, toggleOverlay, hover }) => {
     return (
         <Fragment>
             <div className='grid-item-container' onMouseEnter={toggleOverlay} onMouseLeave={toggleOverlay} role='img'>

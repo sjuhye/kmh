@@ -39,6 +39,7 @@ const Blog = () => {
               formatString: "dddd, MMMM d, yyyy"
             )
             slug
+            contentful_id
           }
         }
       }
@@ -52,9 +53,9 @@ const Blog = () => {
     <div className='main'>
       <Navbar />
       <div className='blog-wrapper'>
-        {instances.map((el, i) => {
+        {instances.map((el) => {
           return (
-            <section key={i}>
+            <section key={el.contentful_id}>
               <div className='title-date'>
                 <Link to={`/blog/${el.node.slug}`}><h1>{el.node.title}</h1></Link>
                 <p>{el.node.published}</p>
