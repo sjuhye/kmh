@@ -1,1 +1,1 @@
-Built with Gatsby + Contentful on Netlify
+Built with Gatsby + Contentful and hosted with Netlify
