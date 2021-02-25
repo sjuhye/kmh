@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
@@ -35,12 +35,6 @@ const Work = () => {
     }
   `);
 
-  const [ hover, setHover ] = useState(false);
-
-  function toggleOverlay() {
-    setHover(currHover => !currHover);
-  }
-
   // allow dynamic ordering of content into columns
   const group = data.allContentfulMediaGrid.nodes.reduce((acc, node) => {
     acc[node.column] = [...acc[node.column] || [], node];
@@ -65,7 +59,7 @@ const Work = () => {
               {arr.map((el) => {
                 return (
                   <Link to={`/work/${el.post.slug}`} key={el.contentful_id}>
-                    <GridItem image={el.media} overlay={el.overlay} text={el.text} toggleOverlay={toggleOverlay} hover={hover} />
+                    <GridItem image={el.media} overlay={el.overlay} text={el.text} />
                   </Link>
                 )
               })}

@@ -4,7 +4,7 @@ require('dotenv').config({
 
 let contentfulOptions = {};
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.CONTEXT === 'production') {
   contentfulOptions = {
     spaceId: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN

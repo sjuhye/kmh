@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
+import { isMobileViewport } from '../utils';
 import '../styles/index.css';
 
 const Navbar = () => {
@@ -49,11 +50,7 @@ const Navbar = () => {
             closeMenu();
         }
 
-        setMobileMenu(!mobileMenu);
-    }
-
-    function isMobileViewport() {
-        return typeof window !== 'undefined' && window.matchMedia('(max-device-width: 650px)').matches;
+        setMobileMenu(currMobileMenu => !currMobileMenu);
     }
 
     return (
@@ -66,7 +63,7 @@ const Navbar = () => {
                 <span className='line'></span>
                 <span className='line'></span>
             </button>
-            <div className={!mobileMenu && isMobileViewport() ? 'inactive' : 'menu'}>
+            <div className={!mobileMenu && isMobileViewport ? 'inactive' : 'menu'}>
                 <div>
                     <button onClick={openMenu} data-index='0'>About</button>
                 </div>
